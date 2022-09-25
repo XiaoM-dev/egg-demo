@@ -1,0 +1,18 @@
+version: '3'
+services:
+    db:
+        image: mongo:4.2
+        container_name: mongodbTest
+        restart: always
+        ports:
+            - '127.0.0.1:27017:27017'
+        command: [--auth]
+        environment:
+          MONGO_INITDB_ROOT_USERNAME: mr
+          MONGO_INITDB_ROOT_PASSWORD: mr
+          MONGO_INITDB_DATABASE: localTest
+          MONGO_USERNAME: mr
+          MONGO_PASSWORD: mr
+        volumes:
+            # - ./.docker/mongo_data:/data/db
+            - ./mongo-init.sh:/docker-entrypoint-initdb.d/mongo-init.sh

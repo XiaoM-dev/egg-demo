@@ -15,6 +15,8 @@ import 'egg-static';
 import 'egg-jsonp';
 import 'egg-view';
 import 'egg-mysql';
+import 'egg-mongoose';
+import 'egg-es';
 import 'egg-validate';
 import { EggPluginItem } from 'egg';
 declare module 'egg' {
@@ -32,6 +34,9 @@ declare module 'egg' {
     jsonp?: EggPluginItem;
     view?: EggPluginItem;
     mysql?: EggPluginItem;
+    mongoose?: EggPluginItem;
+    elasticsearch?: EggPluginItem;
+    swaggerdoc?: EggPluginItem;
     validate?: EggPluginItem;
   }
 }

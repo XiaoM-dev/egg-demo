@@ -31,9 +31,9 @@ export default (appInfo: EggAppInfo) => {
     // 是否加载到 agent 上，默认关闭
     agent: false,
   };
-  
+
   // err
-  config.onerror={
+  config.onerror = {
     all(err: any, ctx: any) {
       // 在此处定义针对所有响应类型的错误处理方法
       // 注意，定义了 config.all 之后，其他错误处理方法不会再生效
@@ -58,23 +58,43 @@ export default (appInfo: EggAppInfo) => {
     formLimit: '1mb',
   };
 
-  
   config.security = {
     csrf: {
       enable: false,
     },
   };
-  
-  config.validate = {   // 配置参数校验器，基于parameter
-    convert: true,    // 对参数可以使用convertType规则进行类型转换
+
+  config.validate = { // 配置参数校验器，基于parameter
+    convert: true, // 对参数可以使用convertType规则进行类型转换
     // validateRoot: false,   // 限制被验证值必须是一个对象。
   };
-  
+
+  config.elasticsearch = {
+    host: 'localhost:9200',
+    apiVersion: '7.x',
+  };
+
+  // swag config
+  config.swaggerdoc = {
+    dirScanner: './app/controller',
+    apiInfo: {
+      title: 'egg-swagger',
+      description: 'swagger-ui for egg',
+      version: '1.0.0',
+    },
+    schemes: [ 'http', 'https' ],
+    consumes: [ 'application/json' ],
+    produces: [ 'application/json' ],
+    securityDefinitions: {},
+    enableSecurity: false,
+    routerMap: true,
+    enable: true,
+  };
+
   // add your special config in here
   const bizConfig = {
     sourceUrl: `https://github.com/eggjs/examples/tree/master/${appInfo.name}`,
   };
-
 
   // the return config will combines to EggAppConfig
   return {
@@ -82,3 +102,10 @@ export default (appInfo: EggAppInfo) => {
     ...bizConfig,
   };
 };
+
+
+  // mongo config
+  exports.mongoose = {
+    url: 'mongodb://mr:mr@localhost:27017/localTest',
+    options: {useNewUrlParser: true,},
+  };
