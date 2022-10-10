@@ -1,0 +1,841 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Test swagger",
+    "description": "Testing the Fastify swagger API",
+    "version": "0.1.0"
+  },
+  "tags": [
+    {
+      "name": "user",
+      "description": "User related end-points"
+    },
+    {
+      "name": "character",
+      "description": "Character related end-points"
+    },
+    {
+      "name": "mguser",
+      "description": "Mguser related end-points"
+    }
+  ],
+  "definitions": {
+    "id": {
+      "type": "string"
+    },
+    "list": {
+      "type": "object",
+      "properties": {
+        "page": {
+          "type": "number",
+          "default": 1
+        },
+        "size": {
+          "type": "number",
+          "default": 10
+        }
+      },
+      "required": [
+        "page",
+        "size"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "paths": {
+    "/character": {
+      "post": {
+        "description": "List action",
+        "operationId": "character/list",
+        "parameters": [
+          {
+            "name": "list",
+            "required": true,
+            "description": "list requset body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "page": {
+                  "type": "number",
+                  "default": 1
+                },
+                "size": {
+                  "type": "number",
+                  "default": 10
+                }
+              },
+              "required": [
+                "page",
+                "size"
+              ],
+              "additionalProperties": false
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "list response",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "number",
+                  "default": 200
+                },
+                "message": {
+                  "type": "string",
+                  "default": "成功"
+                },
+                "data": {
+                  "type": "object",
+                  "properties": {
+                    "page": {
+                      "type": "number",
+                      "default": 1
+                    },
+                    "size": {
+                      "type": "number",
+                      "default": 10
+                    },
+                    "count": {
+                      "type": "number",
+                      "default": 100
+                    },
+                    "list": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "default": "test string value"
+                          },
+                          "userName": {
+                            "type": "string",
+                            "default": "test string value"
+                          },
+                          "passWord": {
+                            "type": "string",
+                            "default": "test string value"
+                          },
+                          "type": {
+                            "type": "string",
+                            "default": "test string value"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "character"
+        ],
+        "produces": [
+          "application/json"
+        ]
+      },
+      "put": {
+        "description": "Add action",
+        "operationId": "character/add",
+        "parameters": [
+          {
+            "name": "add",
+            "required": false,
+            "description": "add requset body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "default": "test string value"
+                },
+                "userName": {
+                  "type": "string",
+                  "default": "test string value"
+                },
+                "passWord": {
+                  "type": "string",
+                  "default": "test string value"
+                },
+                "type": {
+                  "type": "string",
+                  "default": "test string value"
+                }
+              },
+              "required": [
+                "userName",
+                "passWord",
+                "type"
+              ],
+              "additionalProperties": false
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "add response",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "number",
+                  "default": 200
+                },
+                "message": {
+                  "type": "string",
+                  "default": "成功"
+                },
+                "data": {
+                  "type": "string",
+                  "default": "操作成功"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "character"
+        ],
+        "produces": [
+          "application/json"
+        ]
+      },
+      "patch": {
+        "description": "Update action",
+        "operationId": "character/update",
+        "parameters": [
+          {
+            "name": "update",
+            "required": false,
+            "description": "update requset body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "default": "test string value"
+                },
+                "userName": {
+                  "type": "string",
+                  "default": "test string value"
+                },
+                "passWord": {
+                  "type": "string",
+                  "default": "test string value"
+                },
+                "type": {
+                  "type": "string",
+                  "default": "test string value"
+                }
+              },
+              "required": [
+                "id"
+              ],
+              "additionalProperties": false
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "update response",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "number",
+                  "default": 200
+                },
+                "message": {
+                  "type": "string",
+                  "default": "成功"
+                },
+                "data": {
+                  "type": "string",
+                  "default": "操作成功"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "character"
+        ],
+        "produces": [
+          "application/json"
+        ]
+      },
+      "delete": {
+        "description": "Delelte action",
+        "operationId": "character/delelte",
+        "parameters": [
+          {
+            "name": "delelte",
+            "required": true,
+            "description": "delelte query parameter",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "delelte response",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "number",
+                  "default": 200
+                },
+                "message": {
+                  "type": "string",
+                  "default": "成功"
+                },
+                "data": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "default": "test string value"
+                    },
+                    "userName": {
+                      "type": "string",
+                      "default": "test string value"
+                    },
+                    "passWord": {
+                      "type": "string",
+                      "default": "test string value"
+                    },
+                    "type": {
+                      "type": "string",
+                      "default": "test string value"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "character"
+        ],
+        "produces": [
+          "application/json"
+        ]
+      }
+    },
+    "/character/:id": {
+      "get": {
+        "description": "Details action",
+        "operationId": "character/details",
+        "parameters": [
+          {
+            "name": "details",
+            "required": true,
+            "description": "details query parameter",
+            "in": "path",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "details response",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "number",
+                  "default": 200
+                },
+                "message": {
+                  "type": "string",
+                  "default": "成功"
+                },
+                "data": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "default": "test string value"
+                    },
+                    "userName": {
+                      "type": "string",
+                      "default": "test string value"
+                    },
+                    "passWord": {
+                      "type": "string",
+                      "default": "test string value"
+                    },
+                    "type": {
+                      "type": "string",
+                      "default": "test string value"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "character"
+        ],
+        "produces": [
+          "application/json"
+        ]
+      }
+    },
+    "/user": {
+      "post": {
+        "description": "List action",
+        "operationId": "user/list",
+        "parameters": [
+          {
+            "name": "list",
+            "required": true,
+            "description": "list requset body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "page": {
+                  "type": "number",
+                  "default": 1
+                },
+                "size": {
+                  "type": "number",
+                  "default": 10
+                }
+              },
+              "required": [
+                "page",
+                "size"
+              ],
+              "additionalProperties": false
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "list response",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "number",
+                  "default": 200
+                },
+                "message": {
+                  "type": "string",
+                  "default": "成功"
+                },
+                "data": {
+                  "type": "object",
+                  "properties": {
+                    "page": {
+                      "type": "number",
+                      "default": 1
+                    },
+                    "size": {
+                      "type": "number",
+                      "default": 10
+                    },
+                    "count": {
+                      "type": "number",
+                      "default": 100
+                    },
+                    "list": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "default": "test string value"
+                          },
+                          "userGuid": {
+                            "type": "string",
+                            "default": "test string value"
+                          },
+                          "userName": {
+                            "type": "string",
+                            "default": "test string value"
+                          },
+                          "passWord": {
+                            "type": "string",
+                            "default": "test string value"
+                          },
+                          "nickName": {
+                            "type": "string",
+                            "default": "test string value"
+                          },
+                          "tel": {
+                            "type": "string",
+                            "default": "test string value"
+                          },
+                          "email": {
+                            "type": "string",
+                            "default": "XdsaX@qq.com"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "user"
+        ],
+        "produces": [
+          "application/json"
+        ]
+      },
+      "put": {
+        "description": "Add action",
+        "operationId": "user/add",
+        "parameters": [
+          {
+            "name": "add",
+            "required": false,
+            "description": "add requset body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "default": "test string value"
+                },
+                "userGuid": {
+                  "type": "string",
+                  "default": "test string value"
+                },
+                "userName": {
+                  "type": "string",
+                  "default": "test string value"
+                },
+                "passWord": {
+                  "type": "string",
+                  "default": "test string value"
+                },
+                "nickName": {
+                  "type": "string",
+                  "default": "test string value"
+                },
+                "tel": {
+                  "type": "string",
+                  "default": "test string value"
+                },
+                "email": {
+                  "type": "string",
+                  "default": "XdsaX@qq.com"
+                }
+              },
+              "required": [
+                "userGuid",
+                "userName",
+                "passWord",
+                "nickName",
+                "tel",
+                "email"
+              ],
+              "additionalProperties": false
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "add response",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "number",
+                  "default": 200
+                },
+                "message": {
+                  "type": "string",
+                  "default": "成功"
+                },
+                "data": {
+                  "type": "string",
+                  "default": "操作成功"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "user"
+        ],
+        "produces": [
+          "application/json"
+        ]
+      },
+      "patch": {
+        "description": "Update action",
+        "operationId": "user/update",
+        "parameters": [
+          {
+            "name": "update",
+            "required": false,
+            "description": "update requset body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "default": "test string value"
+                },
+                "userGuid": {
+                  "type": "string",
+                  "default": "test string value"
+                },
+                "userName": {
+                  "type": "string",
+                  "default": "test string value"
+                },
+                "passWord": {
+                  "type": "string",
+                  "default": "test string value"
+                },
+                "nickName": {
+                  "type": "string",
+                  "default": "test string value"
+                },
+                "tel": {
+                  "type": "string",
+                  "default": "test string value"
+                },
+                "email": {
+                  "type": "string",
+                  "default": "XdsaX@qq.com"
+                }
+              },
+              "required": [
+                "id"
+              ],
+              "additionalProperties": false
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "update response",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "number",
+                  "default": 200
+                },
+                "message": {
+                  "type": "string",
+                  "default": "成功"
+                },
+                "data": {
+                  "type": "string",
+                  "default": "操作成功"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "user"
+        ],
+        "produces": [
+          "application/json"
+        ]
+      },
+      "delete": {
+        "description": "Delelte action",
+        "operationId": "user/delelte",
+        "parameters": [
+          {
+            "name": "delelte",
+            "required": true,
+            "description": "delelte query parameter",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "delelte response",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "number",
+                  "default": 200
+                },
+                "message": {
+                  "type": "string",
+                  "default": "成功"
+                },
+                "data": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "default": "test string value"
+                    },
+                    "userGuid": {
+                      "type": "string",
+                      "default": "test string value"
+                    },
+                    "userName": {
+                      "type": "string",
+                      "default": "test string value"
+                    },
+                    "passWord": {
+                      "type": "string",
+                      "default": "test string value"
+                    },
+                    "nickName": {
+                      "type": "string",
+                      "default": "test string value"
+                    },
+                    "tel": {
+                      "type": "string",
+                      "default": "test string value"
+                    },
+                    "email": {
+                      "type": "string",
+                      "default": "XdsaX@qq.com"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "user"
+        ],
+        "produces": [
+          "application/json"
+        ]
+      }
+    },
+    "/user/:id": {
+      "get": {
+        "description": "Details action",
+        "operationId": "user/details",
+        "parameters": [
+          {
+            "name": "details",
+            "required": true,
+            "description": "details query parameter",
+            "in": "path",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "details response",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "number",
+                  "default": 200
+                },
+                "message": {
+                  "type": "string",
+                  "default": "成功"
+                },
+                "data": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "default": "test string value"
+                    },
+                    "userGuid": {
+                      "type": "string",
+                      "default": "test string value"
+                    },
+                    "userName": {
+                      "type": "string",
+                      "default": "test string value"
+                    },
+                    "passWord": {
+                      "type": "string",
+                      "default": "test string value"
+                    },
+                    "nickName": {
+                      "type": "string",
+                      "default": "test string value"
+                    },
+                    "tel": {
+                      "type": "string",
+                      "default": "test string value"
+                    },
+                    "email": {
+                      "type": "string",
+                      "default": "XdsaX@qq.com"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "user"
+        ],
+        "produces": [
+          "application/json"
+        ]
+      }
+    }
+  },
+  "host": "127.0.0.1:7001",
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "basePath": "/",
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "securityDefinitions": {
+    "api_key": {
+      "type": "apiKey",
+      "name": "Authorization",
+      "in": "header"
+    },
+    "github_auth": {
+      "type": "oauth2",
+      "authorizationUrl": "http://swagger.io/api/oauth/dialog",
+      "flow": "implicit",
+      "scopes": {
+        "write:homes": "modify home info",
+        "read:homes": "read home info"
+      }
+    }
+  },
+  "security": [
+    {
+      "api_key": []
+    }
+  ],
+  "externalDocs": {
+    "url": "https://swagger.io",
+    "description": "Find more info here"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "settings": {
+    "analysis": {
+        "normalizer": {
+            "lowercase": {
+                "type": "custom",
+                "filter": ["lowercase"]
+            }
+        }
+    }
+  },
+  "mappings": {
+    "dynamic": "true",
+    "properties": {
+        "password": {
+            "type": "keyword"
+        },
+        "type": {
+            "type": "keyword",
+            "normalizer": "lowercase"
+        },
+        "username": {
+            "type": "keyword",
+            "fields": {
+                "wildtype": {
+                    "type": "wildcard"
+                }
+            }
+        }
+    }
+}
+}
